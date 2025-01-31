@@ -21,8 +21,5 @@ test:
   database: <%= ENV.fetch("PG_TEST_DB") { 'test_db' } %>
 
 production:
-  <<: *default
-  database: <%= ENV.fetch("PG_PRODUCTION_DB") { 'production_db' } %>
-  username: <%= ENV.fetch("PG_PRODUCTION_USERNAME") { 'production_username' } %>
-  password: <%= ENV.fetch("PG_PRODUCTION_PASSWORD") { 'production_password' } %>
+  adapter: postgresql
   host: <%= ENV.fetch("DATABASE_URL") { 'production_host' } %>
