@@ -1,3 +1,1 @@
-release: 
-rails db:create
-rails db:migrate
+release: bin/rails db:create db:migrate
