@@ -1,28 +1,22 @@
-# PostgreSQL. Ensure the pg gem is defined in your Gemfile
-#   gem "pg"
+# SQLite. Ensure the sqlite3 gem is defined in your Gemfile
+#   gem "sqlite3"
 #
 default: &default
-  adapter: postgresql
-  encoding: unicode
+  adapter: sqlite3
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: <%= ENV.fetch("DATABASE_USER") { 'your_username' } %>
-  password: <%= ENV.fetch("DATABASE_PASSWORD") { 'your_password' } %>
-  host: <%= ENV.fetch("PG_HOST") { 'localhost' } %>
+  timeout: 5000
 
 development:
   <<: *default
-  database: <%= ENV.fetch("PG_DEVELOPMENT_DB") { 'development_db' } %>
+  database: db/development.sqlite3
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: <%= ENV.fetch("PG_TEST_DB") { 'test_db' } %>
+  database: db/test.sqlite3
 
 production:
   <<: *default
-  database: <%= ENV.fetch("PG_PRODUCTION_DB") { 'production_db' } %>
-  username: <%= ENV.fetch("PG_PRODUCTION_USERNAME") { 'production_username' } %>
-  password: <%= ENV.fetch("PG_PRODUCTION_PASSWORD") { 'production_password' } %>
-  host: <%= ENV.fetch("PG_PRODUCTION_HOST") { 'production_host' } %>
+  database: db/production.sqlite3
