@@ -1,1 +1,1 @@
-release: bin/rails db:create db:migrate
+release: bin/rake db:create db:migrate RAILS_ENV=production
