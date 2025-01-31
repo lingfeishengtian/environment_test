@@ -22,4 +22,4 @@ test:
 
 production:
   adapter: postgresql
-  host: <%= ENV.fetch("DATABASE_URL") { 'production_host' } %>
+  url: <%= ENV.fetch("DATABASE_URL") { 'production_host' } %>
