@@ -1,0 +1,19 @@
+<div id="<%= dom_id user %>">
+  <div>
+    <strong>Username:</strong>
+    <%= user.username %>
+  </div>
+  <div>
+    <%= link_to 'Show', user %>
+  </div>
+  <div>
+    <%= link_to 'Edit', edit_user_path(user) %>
+  </div>
+  <div>
+    <%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %>
+  </div>
+  <div>
+    <%= link_to 'Back', users_path %>
+  </div>
+
+</div>

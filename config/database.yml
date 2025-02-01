@@ -5,13 +5,12 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: <%= ENV.fetch("DATABASE_USER") { 'your_username' } %>
-  password: <%= ENV.fetch("DATABASE_PASSWORD") { 'your_password' } %>
-  host: <%= ENV.fetch("PG_HOST") { 'localhost' } %>
 
 development:
   <<: *default
   database: <%= ENV.fetch("PG_DEVELOPMENT_DB") { 'development_db' } %>
+  username: <%= ENV.fetch("DATABASE_USER") { 'your_username' } %>
+  password: <%= ENV.fetch("DATABASE_PASSWORD") { 'your_password' } %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -19,10 +18,10 @@ development:
 test:
   <<: *default
   database: <%= ENV.fetch("PG_TEST_DB") { 'test_db' } %>
+  host: localhost
+  username: <%= ENV.fetch("POSTGRES_USER") { ENV.fetch("DATABASE_USER") { 'test_user' } } %>
+  password: <%= ENV.fetch("POSTGRES_PASSWORD") { ENV.fetch("DATABASE_PASSWORD") { 'your_password' } } %>
 
 production:
   <<: *default
-  database: <%= ENV.fetch("PG_PRODUCTION_DB") { 'production_db' } %>
-  username: <%= ENV.fetch("PG_PRODUCTION_USERNAME") { 'production_username' } %>
-  password: <%= ENV.fetch("PG_PRODUCTION_PASSWORD") { 'production_password' } %>
-  host: <%= ENV.fetch("PG_PRODUCTION_HOST") { 'production_host' } %>
+  url: <%= ENV.fetch("DATABASE_URL") { 'production_host' } %>
