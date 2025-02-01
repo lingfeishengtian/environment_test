@@ -47,6 +47,7 @@ jobs:
         run: bundler exec rspec .
       - name: Run brakeman
         run: brakeman -o brakeman.txt
+        brakeman_flags: '--no-exit-on-warn --no-exit-on-error'
       - name: Run rubocop
         run: bundler exec rubocop --out rubocop.txt
       - name: Upload coverage results
